@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -30,9 +31,17 @@ class DashboardFragment : Fragment() {
         })
 
 
+        val webView:WebView  = root.findViewById(R.id.web_view)
+        val webView2:WebView  = root.findViewById(R.id.web_view2)
+        val webView3:WebView  = root.findViewById(R.id.web_view3)
 
+        webView.settings.javaScriptEnabled = true
+        webView2.settings.javaScriptEnabled = true
+        webView3.settings.javaScriptEnabled = true
+        webView.loadUrl("https://www.youtube.com/embed/3RuPQ9VW_x8")
+        webView2.loadUrl("https://www.youtube.com/embed/XqPe_iAm8lI")
+        webView3.loadUrl("https://www.youtube.com/embed/XqPe_iAm8lI")
 
-        web_view?.loadUrl("http://www.ya.ru")
 
         return root
 

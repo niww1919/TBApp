@@ -21,6 +21,14 @@
         android:text="Home"
         />
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        app:layout_constraintTop_toBottomOf="@+id/text_home"
+        android:id="@+id/llc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
     <androidx.appcompat.widget.AppCompatButton
         app:layout_constraintTop_toBottomOf="@+id/text_home"
         android:id="@+id/btn1"
@@ -28,4 +36,11 @@
         android:layout_height="wrap_content"
         android:text="Start"
         />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.tbapp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.tbapp.R
+import com.example.tbapp.ui.training.TrainingFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -32,10 +35,21 @@ class HomeFragment : Fragment() {
         })
 
         val btn1:AppCompatButton  = root.findViewById(R.id.btn1)
+        val btn2:AppCompatButton  = root.findViewById(R.id.btn2)
         btn1.setOnClickListener { Toast.makeText(root.context, "Test", Toast.LENGTH_SHORT).show() }
 
-        btn1.setOnClickListener {  }
+        val trainingFragment = TrainingFragment()
+        val transaction = fragmentManager?.beginTransaction()
 
+
+//        btn2.setOnClickListener { btn2.setText("Work") }
+        btn2.setOnClickListener {
+            //todo how show new fragment
+
+//            transaction?.replace(trainingFragment)
+//            transaction?.commit()
+
+        }
         return root
     }
 }
