@@ -1,6 +1,5 @@
 package com.example.tbapp.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +8,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.tbapp.R
-import com.example.tbapp.ui.training.TrainingFragment
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
@@ -34,17 +31,21 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val btn1:AppCompatButton  = root.findViewById(R.id.btn1)
-        val btn2:AppCompatButton  = root.findViewById(R.id.btn2)
+        val btn1: AppCompatButton = root.findViewById(R.id.btn1)
+        val btn2: AppCompatButton = root.findViewById(R.id.btn2)
         btn1.setOnClickListener { Toast.makeText(root.context, "Test", Toast.LENGTH_SHORT).show() }
 
-        val trainingFragment = TrainingFragment()
-        val transaction = fragmentManager?.beginTransaction()
+//        val trainingFragment = TrainingFragment()
+//        val transaction = fragmentManager?.beginTransaction()
+
+        val dataBase = Firebase.database
+        val myRef = dataBase.getReference("massage")
 
 
 //        btn2.setOnClickListener { btn2.setText("Work") }
         btn2.setOnClickListener {
             //todo how show new fragment
+            myRef.setValue(textView.text)
 
 //            transaction?.replace(trainingFragment)
 //            transaction?.commit()
