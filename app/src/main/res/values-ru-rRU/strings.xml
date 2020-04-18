@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="typeOfTraining">
+        <item>Круговые</item>
+        <item>Обычные</item>
+        <item>Лесенка</item>
+        <item>Сложные</item>
+
+    </string-array>
+    <string name="typeOfTraining">Тип тренировки</string>
+</resources>

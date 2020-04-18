@@ -4,7 +4,7 @@ import com.google.firebase.ktx.Firebase
 import java.util.*
 
 
-data class youtubeLinkStore (
+data class YouTubeLinkStore (
     val date: MutableList<String> ,
     val linkId: MutableList<String>
 ){

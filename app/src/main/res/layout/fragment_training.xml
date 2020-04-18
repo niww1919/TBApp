@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    android:id="@+id/fragment_training"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:gravity="center"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/typeOfTraining" />
+
     <androidx.appcompat.widget.AppCompatSpinner
+
+        android:layout_margin="15dp"
+        android:id="@+id/acSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/typeOfTraining"
@@ -14,6 +27,7 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
+
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -102,4 +116,4 @@
         android:text="Start"/>
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

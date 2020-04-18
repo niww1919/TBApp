@@ -1,6 +1,5 @@
 package com.example.tbapp.ui.dashboard
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.tbapp.R
-import com.example.tbapp.data.youtubeLinkStore
+import com.example.tbapp.data.YouTubeLinkStore
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -43,22 +42,23 @@ class DashboardFragment : Fragment() {
         val editText = root.findViewById<EditText>(R.id.editText)
         val dataBase = Firebase.database
         val linkStore = dataBase.getReference("Link")
-        val youtubeLinkStore: youtubeLinkStore = youtubeLinkStore(mutableListOf(), mutableListOf())
+        val YouTubeLinkStore: YouTubeLinkStore = YouTubeLinkStore(mutableListOf(), mutableListOf())
 
 
         btn.setOnClickListener {
 
-            youtubeLinkStore.linkId.add(editText.text.toString())
-            youtubeLinkStore.date.add(
+            YouTubeLinkStore.linkId.add(editText.text.toString())
+            YouTubeLinkStore.date.add(
                 SimpleDateFormat("dd.MM.yy HH:mm", Locale.getDefault()).format(
                     Date()
                 ))
-            linkStore.setValue(youtubeLinkStore)
+            linkStore.setValue(YouTubeLinkStore)
 
             val newWebView: WebView = WebView(root.context)
             newWebView.settings.javaScriptEnabled = true
             newWebView.loadUrl("https://www.youtube.com/embed/3RuPQ9VW_x8")
             llVideo.addView(newWebView)
+            
 
         }
 
