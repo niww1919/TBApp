@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "658070976110",
+    "firebase_url": "https://tbapp-d6424.firebaseio.com",
+    "project_id": "tbapp-d6424",
+    "storage_bucket": "tbapp-d6424.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658070976110:android:cee1f0f41cac035a04d87f",
+        "android_client_info": {
+          "package_name": "com.example.tbapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658070976110-bdmae0lejocemsroa6fe3ih6pvssgoto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tbapp",
+            "certificate_hash": "ad963562c979591c1a06ce3b3329ecbfd29e07df"
+          }
+        },
+        {
+          "client_id": "658070976110-oai7r1h7ku6tnldv85j81buau3p10l75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvpKeXyJCp0XU7ipiP8zqqQqLw4S6uIyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658070976110-oai7r1h7ku6tnldv85j81buau3p10l75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
