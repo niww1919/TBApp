@@ -40,7 +40,9 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Add"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_of_day"

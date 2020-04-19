@@ -42,17 +42,17 @@ class DashboardFragment : Fragment() {
         val editText = root.findViewById<EditText>(R.id.editText)
         val dataBase = Firebase.database
         val linkStore = dataBase.getReference("Link")
-        val YouTubeLinkStore: YouTubeLinkStore = YouTubeLinkStore(mutableListOf(), mutableListOf())
+        val youTubeLinkStore: YouTubeLinkStore = YouTubeLinkStore(mutableListOf(), mutableListOf())
 
 
         btn.setOnClickListener {
 
-            YouTubeLinkStore.linkId.add(editText.text.toString())
-            YouTubeLinkStore.date.add(
+            youTubeLinkStore.linkId.add(editText.text.toString())
+            youTubeLinkStore.date.add(
                 SimpleDateFormat("dd.MM.yy HH:mm", Locale.getDefault()).format(
                     Date()
                 ))
-            linkStore.setValue(YouTubeLinkStore)
+            linkStore.setValue(youTubeLinkStore)
 
             val newWebView: WebView = WebView(root.context)
             newWebView.settings.javaScriptEnabled = true

@@ -14,6 +14,7 @@ class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = SimpleDateFormat(DATE_TIME_FORMAT, Locale.getDefault()).format(date)
+//        value = SimpleDateFormat("dd.MM.yy HH:mm", Locale.getDefault()).format(date)
 
     }
     val text: LiveData<String> = _text
