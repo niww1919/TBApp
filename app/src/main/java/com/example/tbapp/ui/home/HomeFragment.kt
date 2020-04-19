@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tbapp.R
 import com.example.tbapp.data.DataRecycler
 import com.example.tbapp.data.NewItemRepository
+import com.example.tbapp.ui.training.TrainingFragment
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
@@ -53,7 +55,12 @@ class HomeFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(root.context)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = NewItemAdapter(itemData)
-        recyclerView.addItemDecoration(DividerItemDecoration(root.context,DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                root.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
 
         val itemTouchHelper = ItemTouchHelper(object :
@@ -88,13 +95,17 @@ class HomeFragment : Fragment() {
         })
 
         btn1.setOnClickListener {
+            //todo how show new fragment
 
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.fragmentContainer, TrainingFragment(), TrainingFragment().TAG)
+                ?.addToBackStack(null)
+                ?.commit()
 //            startTimer(handler, root, vibrator, 3000, 2000)
 
         }
 
         btn2.setOnClickListener {
-            //todo how show new fragment
             itemData.add(
                 1, DataRecycler(
                     SimpleDateFormat("dd.MM.yy", Locale.getDefault()).format(Date()),
