@@ -12,6 +12,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,6 +53,7 @@ class HomeFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(root.context)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = NewItemAdapter(itemData)
+        recyclerView.addItemDecoration(DividerItemDecoration(root.context,DividerItemDecoration.VERTICAL))
 
 
         val itemTouchHelper = ItemTouchHelper(object :
