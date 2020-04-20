@@ -6,6 +6,8 @@
     <string name="add">Add</string>
     <string name="typeOfTraining">Type of training</string>
     <string name="hard">Hard</string>
+    <string name="whatDoYouWant">What do you want?</string>
+    <string name="whatHelpedTouGetResult">What helped you get the result?</string>
 
 
     <string-array name="typeOfTraining">

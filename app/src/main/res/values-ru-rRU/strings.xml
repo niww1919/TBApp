@@ -9,4 +9,6 @@
 
     </string-array>
     <string name="typeOfTraining">Тип тренировки</string>
+    <string name="whatDoYouWant">Что вы хотите улучшить/узнать после просмотра видео?</string>
+    <string name="whatHelpedTouGetResult">Что помогло тебе получить результат?</string>
 </resources>

@@ -43,9 +43,6 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val btn1: AppCompatButton = root.findViewById(R.id.btn1)
-        val btn2: AppCompatButton = root.findViewById(R.id.btn2)
-        val llc = root.findViewById<LinearLayoutCompat>(R.id.llc)
         val handler = Handler()
         val vibrator = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
@@ -64,7 +61,7 @@ class HomeFragment : Fragment() {
 
 
         val itemTouchHelper = ItemTouchHelper(object :
-            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -74,9 +71,24 @@ class HomeFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                Toast.makeText(root.context, "Swipe", Toast.LENGTH_SHORT).show()
-                itemData.removeAt(viewHolder.adapterPosition)
-                (recyclerView.adapter as NewItemAdapter).notifyItemRemoved(viewHolder.adapterPosition) // todo how to remove item
+                if (direction == ItemTouchHelper.LEFT) {
+
+                    Toast.makeText(root.context, "Swipe", Toast.LENGTH_SHORT).show()
+                    itemData.removeAt(viewHolder.adapterPosition)
+                    (recyclerView.adapter as NewItemAdapter).notifyItemRemoved(viewHolder.adapterPosition) // todo how to remove item
+                }
+
+                if (direction == ItemTouchHelper.RIGHT) {
+                    fragmentManager?.beginTransaction()
+                        ?.replace(
+                            R.id.fragmentContainer,
+                            TrainingFragment(),
+                            TrainingFragment().TAG
+                        )
+                        ?.addToBackStack(null)
+                        ?.commit()
+                }
+
 
             }
 
@@ -84,38 +96,18 @@ class HomeFragment : Fragment() {
 
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (linearLayoutManager.findLastVisibleItemPosition() == itemData.size) {
-                    itemData.addAll(NewItemRepository.data)
-                    recyclerView.adapter?.notifyItemRangeInserted(itemData.size, 10)
-                }
-            }
 
-        })
+//        btn1.setOnClickListener {
+//            //todo how show new fragment
+//
+//            fragmentManager?.beginTransaction()
+//                ?.replace(R.id.fragmentContainer, TrainingFragment(), TrainingFragment().TAG)
+//                ?.addToBackStack(null)
+//                ?.commit()
+////            startTimer(handler, root, vibrator, 3000, 2000)
+//
+//        }
 
-        btn1.setOnClickListener {
-            //todo how show new fragment
-
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.fragmentContainer, TrainingFragment(), TrainingFragment().TAG)
-                ?.addToBackStack(null)
-                ?.commit()
-//            startTimer(handler, root, vibrator, 3000, 2000)
-
-        }
-
-        btn2.setOnClickListener {
-            itemData.add(
-                1, DataRecycler(
-                    SimpleDateFormat("dd.MM.yy", Locale.getDefault()).format(Date()),
-                    SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
-                )
-            )
-            (recyclerView.adapter as NewItemAdapter).notifyItemInserted(1)
-
-
-        }
         return root
     }
 
