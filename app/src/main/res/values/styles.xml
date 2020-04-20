@@ -5,10 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#64B5F6</item>
         <item name="colorAccent">@color/colorAccent</item>
+
 <!--        <item name="android:textColor">@android:color/tertiary_text_light</item>-->
 <!--        <item name="android:textColorPrimary">@android:color/tertiary_text_light</item>-->
 <!--        <item name="titleTextColor">@android:color/tertiary_text_light</item>-->
 
     </style>
+
 
 </resources>
