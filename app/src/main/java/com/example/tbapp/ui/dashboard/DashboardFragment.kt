@@ -49,12 +49,7 @@ class DashboardFragment : Fragment() {
 //                    Date()
 //                ))
 //            linkStore.setValue(youTubeLinkStore)
-//
-//            val newWebView: WebView = WebView(root.context)
-//            newWebView.settings.javaScriptEnabled = true
-//            newWebView.loadUrl("https://www.youtube.com/embed/3RuPQ9VW_x8")
-//            llVideo.addView(newWebView)
-//
+        //todo save to firebase
 //
 //        }
 

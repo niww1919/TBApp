@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tbapp.R
 import com.example.tbapp.data.DataRecycler
 import com.example.tbapp.data.NewItemRepository
-import com.example.tbapp.ui.training.TrainingFragment
+import com.example.tbapp.ui.fragment.training.TrainingFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
