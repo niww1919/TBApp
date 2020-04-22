@@ -9,4 +9,6 @@
 
     </string-array>
     <string name="typeOfTraining">Тип тренировки</string>
+    <string name="whatDoYouWant">Какие упраждения из видео ты сделал?</string>
+    <string name="whatHelpedTouGetResult">Какой результат получил?</string>
 </resources>

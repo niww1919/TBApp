@@ -37,30 +37,21 @@ class DashboardFragment : Fragment() {
         val webView: WebView = root.findViewById(R.id.web_view)
         val webView2: WebView = root.findViewById(R.id.web_view2)
         val webView3: WebView = root.findViewById(R.id.web_view3)
-        val btn: Button = root.findViewById(R.id.btn_add_video)
-        val llVideo = root.findViewById<LinearLayout>(R.id.llVideo)
-        val editText = root.findViewById<EditText>(R.id.editText)
         val dataBase = Firebase.database
         val linkStore = dataBase.getReference("Link")
-        val YouTubeLinkStore: YouTubeLinkStore = YouTubeLinkStore(mutableListOf(), mutableListOf())
+        val youTubeLinkStore: YouTubeLinkStore = YouTubeLinkStore(mutableListOf(), mutableListOf())
 
 
-        btn.setOnClickListener {
-
-            YouTubeLinkStore.linkId.add(editText.text.toString())
-            YouTubeLinkStore.date.add(
-                SimpleDateFormat("dd.MM.yy HH:mm", Locale.getDefault()).format(
-                    Date()
-                ))
-            linkStore.setValue(YouTubeLinkStore)
-
-            val newWebView: WebView = WebView(root.context)
-            newWebView.settings.javaScriptEnabled = true
-            newWebView.loadUrl("https://www.youtube.com/embed/3RuPQ9VW_x8")
-            llVideo.addView(newWebView)
-            
-
-        }
+//        btn.setOnClickListener {
+//
+//            youTubeLinkStore.date.add(
+//                SimpleDateFormat("dd.MM.yy HH:mm", Locale.getDefault()).format(
+//                    Date()
+//                ))
+//            linkStore.setValue(youTubeLinkStore)
+        //todo save to firebase
+//
+//        }
 
         webView.settings.javaScriptEnabled = true
         webView2.settings.javaScriptEnabled = true

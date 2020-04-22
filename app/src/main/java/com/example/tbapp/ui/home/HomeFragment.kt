@@ -12,17 +12,23 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbapp.R
 import com.example.tbapp.data.DataRecycler
 import com.example.tbapp.data.NewItemRepository
+import com.example.tbapp.ui.fragment.training.TrainingFragment
+import kotlinx.android.synthetic.main.fragment_home.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private val itemData: MutableList<DataRecycler> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,38 +43,71 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val btn1: AppCompatButton = root.findViewById(R.id.btn1)
-        val btn2: AppCompatButton = root.findViewById(R.id.btn2)
-        val llc = root.findViewById<LinearLayoutCompat>(R.id.llc)
         val handler = Handler()
         val vibrator = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        itemData.addAll(NewItemRepository.data)
 
         val recyclerView = root.findViewById<RecyclerView>(R.id.rv_of_day)
         val linearLayoutManager = LinearLayoutManager(root.context)
         recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = NewItemAdapter( NewItemRepository.data)
+        recyclerView.adapter = NewItemAdapter(itemData)
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                root.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
 
+        val itemTouchHelper = ItemTouchHelper(object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                TODO("Not yet implemented")
+            }
 
-        btn1.setOnClickListener {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                if (direction == ItemTouchHelper.LEFT) {
 
-            startTimer(handler, root, vibrator, 3000, 2000)
-            startTimer(handler, root, vibrator, 6000, 2000)
-            startTimer(handler, root, vibrator, 9000, 2000)
+                    Toast.makeText(root.context, "Swipe", Toast.LENGTH_SHORT).show()
+                    itemData.removeAt(viewHolder.adapterPosition)
+                    (recyclerView.adapter as NewItemAdapter).notifyItemRemoved(viewHolder.adapterPosition) // todo how to remove item
+                }
 
-        }
+                if (direction == ItemTouchHelper.RIGHT) {
+                    fragmentManager?.beginTransaction()
+                        ?.replace(
+                            R.id.fragmentContainer,
+                            TrainingFragment(),
+                            TrainingFragment().TAG
+                        )
+                        ?.addToBackStack(null)
+                        ?.commit()
+                }
 
-        btn2.setOnClickListener {
-            //todo how show new fragment
-//            val intent = Intent(root.context, TrainingFragment::class.java)
-//            startActivity(intent)
-//            childFragmentManager
-//                .beginTransaction()
-//                .replace(R.id.fragment_training,HomeFragment())
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                .commit()
 
-        }
+            }
+
+        })
+
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
+
+//        btn1.setOnClickListener {
+//            //todo how show new fragment
+//
+//            fragmentManager?.beginTransaction()
+//                ?.replace(R.id.fragmentContainer, TrainingFragment(), TrainingFragment().TAG)
+//                ?.addToBackStack(null)
+//                ?.commit()
+////            startTimer(handler, root, vibrator, 3000, 2000)
+//
+//        }
+
         return root
     }
 

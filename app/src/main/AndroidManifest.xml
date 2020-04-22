@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.training.TrainingFragment"/>
+        <activity android:name=".ui.fragment.training.TrainingFragment"/>
     </application>
 
 </manifest>
