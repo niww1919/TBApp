@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.tbapp.R
+import com.example.tbapp.ui.fragment.training.ToDoFragment
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.time.seconds
@@ -31,6 +32,14 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+        val btnToDo = root.findViewById<AppCompatButton>(R.id.btn_open_todo)
+
+        btnToDo.setOnClickListener {
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.frame_todo, ToDoFragment(), "ToDoFragment")?.addToBackStack(null)
+                ?.commit()
+        }
 
         return root
     }
