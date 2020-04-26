@@ -34,6 +34,7 @@ class NewItemAdapter(private val data: MutableList<DataRecycler>) :
             return holder.bind(data[position - 1])
         }
 
+
     }
 
     override fun getItemCount(): Int {

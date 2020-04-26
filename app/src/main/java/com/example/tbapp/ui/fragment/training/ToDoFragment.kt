@@ -31,6 +31,7 @@ import java.util.*
 
 class ToDoFragment : Fragment() { //todo made fragment
 
+    val dataBase = Firebase.database
     val db = DBToDo(mutableListOf("A", "B"))
 
 
@@ -51,6 +52,7 @@ class ToDoFragment : Fragment() { //todo made fragment
 
         btnAddTodo.setOnClickListener {
             addToRealTimeFireBase(root)
+            loadDataToFireBase(root)
         }
 
         val itemTouchHelper = ItemTouchHelper(object :
@@ -84,7 +86,6 @@ class ToDoFragment : Fragment() { //todo made fragment
     }
 
     private fun addToRealTimeFireBase(root: View) {
-        val dataBase = Firebase.database
         var text = root.findViewById<AppCompatEditText>(R.id.et_add_todo).text.toString()
         val store =
             dataBase.getReference( text)
@@ -112,6 +113,33 @@ class ToDoFragment : Fragment() { //todo made fragment
         Toast.makeText(root.context, "Add $text", Toast.LENGTH_SHORT).show()
 
 
+    }
+
+    private fun loadDataToFireBase(root: View) {
+
+        val db = Firebase.firestore
+
+        val time = hashMapOf(
+            "Date" to "${Date()}",
+            "Time" to "",
+            "Type" to ""
+        )
+
+        db.collection("time_of_training")
+            .add(time)
+            .addOnSuccessListener {
+                Toast.makeText(
+                    root.context,
+                    "Time was wrote",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }.addOnFailureListener {
+                Toast.makeText(
+                    root.context,
+                    "Time do not was wrote",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
     }
 
 

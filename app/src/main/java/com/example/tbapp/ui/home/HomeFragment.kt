@@ -2,6 +2,7 @@ package com.example.tbapp.ui.home
 
 import android.content.Context
 import android.os.*
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,15 +21,18 @@ import com.example.tbapp.R
 import com.example.tbapp.data.DataRecycler
 import com.example.tbapp.data.NewItemRepository
 import com.example.tbapp.ui.fragment.training.TrainingFragment
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 import kotlin.random.Random
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private val itemData: MutableList<DataRecycler> = mutableListOf()
+    val TAG = "LOADTIME"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +49,21 @@ class HomeFragment : Fragment() {
 
         val handler = Handler()
         val vibrator = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        val db =FirebaseFirestore.getInstance()
+
+        val dataMap = HashMap<String,String>()
+        dataMap[homeViewModel.text.toString()] = homeViewModel.text.toString()
+
+        db.collection("Time")
+            .add(dataMap)
+            .addOnSuccessListener {
+                Log.d(TAG, "DocumentSnapshot added with ID: " + it.getId());
+            }
+            .addOnFailureListener {
+                Log.d(TAG, "Error adding document", it);
+            }
+
 
         itemData.addAll(NewItemRepository.data)
 
