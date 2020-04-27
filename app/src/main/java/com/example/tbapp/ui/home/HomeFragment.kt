@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val handler = Handler()
         val vibrator = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         //todo realtime database

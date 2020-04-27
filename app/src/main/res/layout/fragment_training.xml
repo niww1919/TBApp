@@ -23,125 +23,127 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:gravity="center"
-            android:text="@string/typeOfTraining"
-            android:textSize="20sp" />
 
-        <androidx.appcompat.widget.AppCompatSpinner
-
-            android:id="@+id/acSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:entries="@array/typeOfTraining"
-
-            />
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textSize="25sp"
                 android:text="Push up" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textSize="25sp"
                 android:text="0" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:layout_margin="5dp"
                 android:id="@+id/ivMinus"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_remove_black_24dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:layout_margin="5dp"
                 android:id="@+id/ivPlus"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_add_black_24dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
         <androidx.appcompat.widget.LinearLayoutCompat
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textSize="25sp"
                 android:text="Push up" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textSize="25sp"
                 android:text="0" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:layout_margin="5dp"
+                android:id="@+id/ivMinus1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_remove_black_24dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:layout_margin="5dp"
+                android:id="@+id/ivPlus1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_add_black_24dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
         <androidx.appcompat.widget.LinearLayoutCompat
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textSize="25sp"
                 android:text="Push up" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textSize="25sp"
                 android:text="0" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:layout_margin="5dp"
+                android:id="@+id/ivMinus2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_remove_black_24dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:layout_margin="5dp"
+                android:id="@+id/ivPlus2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_add_black_24dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="center"
             android:text="Start" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_start"
