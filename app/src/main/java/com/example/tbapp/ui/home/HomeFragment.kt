@@ -8,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -21,12 +19,9 @@ import com.example.tbapp.R
 import com.example.tbapp.data.DataRecycler
 import com.example.tbapp.data.NewItemRepository
 import com.example.tbapp.ui.fragment.training.TrainingFragment
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_home.*
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.HashMap
-import kotlin.random.Random
+
 
 class HomeFragment : Fragment() {
 
@@ -50,19 +45,23 @@ class HomeFragment : Fragment() {
         val handler = Handler()
         val vibrator = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
-        val db =FirebaseFirestore.getInstance()
+        //todo realtime database
+        val database = FirebaseDatabase.getInstance().getReference()
+        database.toString()
 
-        val dataMap = HashMap<String,String>()
-        dataMap[homeViewModel.text.toString()] = homeViewModel.text.toString()
+        //todo firestore
+//        val db =FirebaseFirestore.getInstance()
+//        val dataMap = HashMap<String,String>()
+//        dataMap[homeViewModel.text.toString()] = homeViewModel.text.toString()
 
-        db.collection("Time")
-            .add(dataMap)
-            .addOnSuccessListener {
-                Log.d(TAG, "DocumentSnapshot added with ID: " + it.getId());
-            }
-            .addOnFailureListener {
-                Log.d(TAG, "Error adding document", it);
-            }
+//        db.collection("Time")
+//            .add(dataMap)
+//            .addOnSuccessListener {
+//                Log.d(TAG, "DocumentSnapshot added with ID: " + it.getId());
+//            }
+//            .addOnFailureListener {
+//                Log.d(TAG, "Error adding document", it);
+//            }
 
 
         itemData.addAll(NewItemRepository.data)

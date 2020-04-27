@@ -23,6 +23,7 @@ import java.util.*
 
 class TrainingFragment : Fragment() { //todo made fragment
 
+    private val dateStore = mutableListOf<String>()
 
     val TAG = "Logging"
     override fun onCreateView(
@@ -51,42 +52,14 @@ class TrainingFragment : Fragment() { //todo made fragment
 
             tvStop.text = Date().toString()
             calculateTime(timeStore, tvResult)
-//            loadDataToFireBase(root)
-
-            addToRealTimeFireBase()
+            loadDataToFireBase(root)
+//
+//            addToRealTimeFireBase()
         }
 
         return root
     }
 
-
-
-    private fun loadDataToFireBase(root: View) {
-
-        val db = Firebase.firestore
-
-        val time = hashMapOf(
-            "Date" to "${Date()}",
-            "Time" to "",
-            "Type" to ""
-        )
-
-        db.collection("time_of_training")
-            .add(time)
-            .addOnSuccessListener {
-                Toast.makeText(
-                    root.context,
-                    "Time was wrote",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }.addOnFailureListener {
-                Toast.makeText(
-                    root.context,
-                    "Time do not was wrote",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-    }
 
     private fun calculateTime(
         timeStore: MutableList<Long>,
@@ -101,36 +74,49 @@ class TrainingFragment : Fragment() { //todo made fragment
     }
 
     private fun addToRealTimeFireBase() {
-        val dataBase = Firebase.database
-        val store = dataBase.getReference(
-            SimpleDateFormat("dd_MM_yy HH:mm", Locale.getDefault()).format(
+        val dataBase = Firebase.database.getReference("Date")
+
+        dateStore.add(
+            SimpleDateFormat("dd.MM.yy HH:mm:ss", Locale.getDefault()).format(
                 Date()
             )
         )
 
-        val youTubeLinkStore: YouTubeLinkStore = YouTubeLinkStore(mutableListOf(), mutableListOf())
-        var stringStore:String = Date().time.toString()
+        dataBase.setValue(dateStore)
 
-        youTubeLinkStore.date.add(
-            SimpleDateFormat("dd.MM.yy HH:mm", Locale.getDefault()).format(
-                Date()
-            )
-        )
-
-        store.setValue(stringStore)
-
-        store.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val value = dataSnapshot.getValue<String>()
-                Log.d(TAG, "Value is: $value")
-
-                //todo this is read db
-            }
-        })
+//        store.addValueEventListener(object : ValueEventListener {
+//            override fun onCancelled(p0: DatabaseError) {
+//            }
+//
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                val value = dataSnapshot.getValue<String>()
+//                Log.d(TAG, "Value is: $value")
+//
+//                //todo this is read db
+//            }
+//        })
 
     }
+
+    private fun loadDataToFireBase(root: View) {
+
+        val db = Firebase.firestore
+
+        val time = hashMapOf(
+            "Date" to "${Date()}",
+            "Time" to "",
+            "Type" to ""
+        )
+
+        db.collection("time_of_training")
+            .add(time)
+            .addOnSuccessListener {
+                Log.d("Realtime db", it.toString())
+            }.addOnFailureListener {
+                Log.d("Realtime db", it.toString())
+
+            }
+    }
+
 
 }
